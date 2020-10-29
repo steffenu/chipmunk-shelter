@@ -1,0 +1,325 @@
+:root {
+  --background: #ca916a;
+  --card: #f5d6c0;
+  --col-1: #505050; }
+
+* {
+  margin: 0;
+  padding: 0; }
+
+/* all elements , as well as these psedo elements  inherit (border box) here
+
+the way it is done here below is  using html and * selectors is to demonstrate specificity
+LINK https://css-tricks.com/almanac/selectors/r/root/
+
+Note : Because html selector has the highest specificity in the dom , using the * selector will allow us to inherit from the html / (:root) selector ...
+Since * is not the highest specificity / top level element ... but html {} is. 
+
+While the :root selector and html selector both target the same HTML elements, it may be useful to know that :root actually has a higher specificity. Pseudo-class selectors (but not pseudo-elements) have a specificity equal to that of a class, which is higher than a basic element selector.
+
+
+*/
+/*
+TEST
+*/
+*,
+*::before,
+*::after {
+  box-sizing: inherit; }
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; }
+
+body {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 400;
+  color: var(--color-grey-dark-2);
+  background-color: var(--background);
+  min-height: 100vh; }
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+  visibility: hidden;
+  /* Hidden by default. Visible on click */
+  min-width: 250px;
+  /* Set a default minimum width */
+  margin-left: -125px;
+  /* Divide value of min-width by 2 */
+  background-color: #333;
+  /* Black background color */
+  color: #fff;
+  /* White text color */
+  text-align: center;
+  /* Centered text */
+  border-radius: 2px;
+  /* Rounded borders */
+  padding: 16px;
+  /* Padding */
+  position: fixed;
+  /* Sit on top of the screen */
+  z-index: 1;
+  /* Add a z-index if needed */
+  left: 50%;
+  /* Center the snackbar */
+  bottom: 30px;
+  /* 30px from the bottom */
+  font-size: 1.5rem; }
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+  visibility: visible;
+  /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0; }
+  to {
+    bottom: 30px;
+    opacity: 1; } }
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0; }
+  to {
+    bottom: 30px;
+    opacity: 1; } }
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1; }
+  to {
+    bottom: 0;
+    opacity: 0; } }
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1; }
+  to {
+    bottom: 0;
+    opacity: 0; } }
+
+.container {
+  max-width: 100vw;
+  background-image: url(/img/bg1.jpg);
+  background-repeat: no-repeat;
+  background-size: 100vw;
+  background-position: 50%; }
+
+.content {
+  display: flex; }
+
+@keyframes example {
+  from {
+    bottom: 0; }
+  to {
+    bottom: 1rem; } }
+
+.landing {
+  box-shadow: black;
+  transform: translateY(4rem);
+  max-width: 800px;
+  margin: auto;
+  min-height: 50rem;
+  background-color: var(--card);
+  box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .landing img {
+    margin-top: 4rem;
+    width: 10rem; }
+  .landing h1 {
+    font-size: 3rem;
+    margin-top: 1rem;
+    font-family: "IBM Plex Sans", sans-serif;
+    letter-spacing: 0.25rem;
+    font-weight: 300;
+    color: var(--col-1); }
+  .landing .gridbox {
+    margin-top: 8rem;
+    width: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 1px;
+    grid-template-columns: repeat(auto-fit, 200px);
+    grid-template-rows: 200px 200px; }
+    .landing .gridbox .gridbox__item {
+      background-color: black;
+      padding: 20px; }
+  .landing button {
+    border: none;
+    margin: 4rem 0;
+    font-size: 2rem;
+    color: white;
+    padding: 1.5rem 6rem;
+    background-color: var(--background); }
+
+.p1 {
+  margin-top: 4rem;
+  color: white;
+  font-size: 2rem;
+  text-align: center; }
+
+.p3 {
+  margin-top: 8rem;
+  margin-bottom: 8rem;
+  color: white;
+  font-size: 2rem;
+  text-align: center; }
+
+.p2 {
+  text-align: center; }
+
+.s1,
+.s2 {
+  color: var(--card); }
+
+.news {
+  max-width: 800px;
+  margin: auto;
+  min-height: 50rem;
+  background-color: var(--card);
+  box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .news button {
+    border: none;
+    margin: 4rem 0;
+    font-size: 2rem;
+    color: white;
+    padding: 1.5rem 6rem;
+    background-color: var(--background); }
+
+.container2 {
+  background-image: url(/img/bg2.jpg);
+  background-repeat: no-repeat;
+  background-size: 100vw;
+  background-position: 50%; }
+
+.landing .n1 {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--background); }
+
+.n2 {
+  font-size: 2rem; }
+
+.text-container {
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10rem;
+  width: 100%; }
+
+.peanut {
+  display: flex;
+  flex-direction: row;
+  padding: 0 10rem;
+  max-width: 800px;
+  margin: 30rem auto;
+  min-height: 30rem;
+  background-color: var(--card);
+  box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .peanut button {
+    border: none;
+    margin: 4rem 0;
+    font-size: 2rem;
+    color: white;
+    padding: 1.5rem 6rem;
+    background-color: var(--background); }
+
+.text-container2 {
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%; }
+
+.container3 {
+  margin-top: 4rem; }
+  .container3 img {
+    width: 300px; }
+
+.text-container3 {
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%; }
+
+.peanut1 {
+  font-size: 3.5rem;
+  color: var(--background); }
+
+.peanut2 {
+  font-size: 2rem;
+  color: var(--background); }
+
+.container4 {
+  background-image: url(/img/bg3.jpg);
+  background-repeat: no-repeat;
+  background-size: 100vw;
+  background-position: 50%;
+  margin-bottom: 8rem; }
+
+.form {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.form-container {
+  font-weight: 300;
+  margin-bottom: 4rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between; }
+
+input {
+  margin-bottom: 2rem;
+  border: none;
+  width: 100%;
+  height: 40px;
+  background-color: var(--background); }
+
+.strich {
+  width: 8rem;
+  border-bottom: 1px solid var(--background); }
+
+.input-label {
+  font-size: 2rem;
+  align-self: flex-start; }
+
+#gh {
+  display: block;
+  margin: auto;
+  margin-bottom: 0.5rem; }
+
+#created {
+  color: var(--card);
+  margin-bottom: 2rem; }
+
+.by {
+  color: white; }
